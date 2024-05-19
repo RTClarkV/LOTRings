@@ -1,0 +1,20 @@
+version: 1.0
+# you can add new custom abilities if you wish, or edit them idc.
+abilities:
+  disabled:
+    ability-type: DISABLED
+    display-name: "&4Disabled"
+    description: "does nothing"
+  strength-1:
+    ability-type: HELD_POTION_EFFECT
+    potion-effect: STRENGTH
+    power: 0
+  fireball:
+    ability-type: FIREBALL
+    display-name: "&cFireball"
+    description:
+    - "Toggle & right click"
+    - "amog"
+    cooldown-seconds: 30
+    damage: 10
+    explosion-radius: 4

@@ -1,0 +1,11 @@
+version: 1.0
+# unique cool rings that are lore accurate here.
+rings:
+  one-ring:
+    name: "&4One Ring"
+    lore:
+      - "just some lore here"
+      - "abilities:"
+    abilities:
+      - "Fireball"
+      - "urmom"

@@ -1,0 +1,8 @@
+version: 1.0
+# languyage stuff here
+cooldown-message: "&c%ability% can be used in %seconds%$s."
+ring-lore-format:
+  - "%ring-name%"
+  - "%description%"
+  - "Abilities:"
+  - "%abilities%"

@@ -1,0 +1,5 @@
+name: LOTRings
+version: '${project.version}'
+main: dev.corestone.lotrings.LOTRings
+api-version: '1.20'
+authors: [CoreStone]
