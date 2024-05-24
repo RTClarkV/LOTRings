@@ -1,6 +1,9 @@
 package dev.corestone.lotrings.data;
 
 import dev.corestone.lotrings.LOTRings;
+import dev.corestone.lotrings.Utilities.Colorize;
+import dev.corestone.lotrings.Utilities.Msg;
+import dev.corestone.lotrings.Utilities.NiceTools;
 import dev.corestone.lotrings.abilities.AbilityType;
 import dev.corestone.lotrings.data.dataessentials.DataFile;
 import dev.corestone.lotrings.data.dataessentials.DataManager;
@@ -17,8 +20,8 @@ public class AbilityDataManager implements DataFile {
     private ArrayList<String> abilities = new ArrayList<>();
     private HashMap<String, AbilityType> abilityTypes = new HashMap<>();
 
-    private HashMap<String, ArrayList<HashMap<String, ?>>> abilityData = new HashMap<>();
-
+    //private HashMap<String, ArrayList<HashMap<String, ?>>> abilityData = new HashMap<>();
+    private HashMap<String, HashMap<String, ArrayList<?>>> abilityData = new HashMap<>();
     public AbilityDataManager(LOTRings plugin, String fileName){
         this.plugin = plugin;
         this.data = new DataManager(plugin, this, fileName);
@@ -26,17 +29,20 @@ public class AbilityDataManager implements DataFile {
         load();
     }
     public void load(){
-        for(String string : data.getConfig().getConfigurationSection("abilities").getKeys(false)){
-            ArrayList<HashMap<String, ?>> dataMap = new ArrayList<>();
-            abilities.add(string);
-            String abilityPath = "abilities."+string;
-            dataMap.add(addAbilityCash("ability-type", AbilityType.valueOf(getConfig().getString(abilityPath+".ability-type").toUpperCase())));
-            for(String restOfDataKey : getConfig().getConfigurationSection(abilityPath).getKeys(false)){
-                if(!restOfDataKey.equals("ability-type")) dataMap.add(addAbilityCash(restOfDataKey, getConfig().get(abilityPath+"."+restOfDataKey)));
+        for(String abilityName : data.getConfig().getConfigurationSection("abilities").getKeys(false)){
+            abilities.add(abilityName);
+            String abilityPath = "abilities."+abilityName;
+            try{
+                abilityData.put(abilityName, NiceTools.castHashMap("ability-type", NiceTools.castArray(AbilityType.valueOf(getConfig().getString(abilityPath+".ability-type").toUpperCase()))));
+                for(String restOfDataKey : getConfig().getConfigurationSection(abilityPath).getKeys(false)){
+                    abilityData.get(abilityName).put(restOfDataKey, NiceTools.castArray(getConfig().get(abilityPath+"."+restOfDataKey)));
+                }
+            }catch (Exception e){
+                plugin.getServer().getConsoleSender().sendMessage(Colorize.format(Msg.prefix + "&cYou must choose a valid Ability Type for ability &f&l" + abilityName + "&c."));
+                plugin.getServer().getConsoleSender().sendMessage(Colorize.format(Msg.prefix + "&cPlease check &f" + abilityName + "&c in the abilities.yml file." ));
             }
-            abilityData.put(string, dataMap);
         }
-        plugin.getServer().getConsoleSender().sendMessage(abilityData.toString());
+
     }
     public <T> HashMap<String, ?> addAbilityCash(String index, T thing){
         HashMap<String, T> innerMap = new HashMap<>();
@@ -51,9 +57,10 @@ public class AbilityDataManager implements DataFile {
     public AbilityType getAbilityType(String ability){
         return abilityTypes.get(ability);
     }
-    public ArrayList<HashMap<String, ?>> getAbilityData(String abilityName){
-        return abilityData.get(abilityName);
+    public <T> T getAbilityData(String ability, String meta){
+        return (T) abilityData.get(ability).get(meta).get(0);
     }
+
     @Override
     public YamlConfiguration getConfig() {
         return data.getConfig();

@@ -1,0 +1,30 @@
+package dev.corestone.lotrings.ringmanagers;
+
+import dev.corestone.lotrings.LOTRings;
+import dev.corestone.lotrings.Ring;
+import dev.corestone.lotrings.abilities.Ability;
+import dev.corestone.lotrings.abilities.DisabledAbility;
+
+import java.util.ArrayList;
+
+public class AbilityGenerator {
+    private LOTRings plugin;
+    public AbilityGenerator(LOTRings plugin){
+        this.plugin = plugin;
+    }
+
+    public ArrayList<Ability> getAbilities(Ring ring){
+        ArrayList<String> listAbil = (ArrayList<String>) plugin.getRingDataManager().getAbilities(ring.getRingName());
+        ArrayList<Ability> abilities = new ArrayList<>();
+
+        for(String strAb : listAbil){
+            switch (plugin.getAbilityDataManager().getAbilityType(strAb)){
+                case DISABLED:
+                    abilities.add(new DisabledAbility(plugin, ring));
+                case FIREBALL:
+            }
+        }
+
+        return abilities;
+    }
+}

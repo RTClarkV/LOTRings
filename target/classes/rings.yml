@@ -6,6 +6,8 @@ rings:
     lore:
       - "just some lore here"
       - "abilities:"
+      - "%ability-data%"
     abilities:
-      - "Fireball"
-      - "urmom"
+      - "fireball"
+    attributes:
+      GENERIC_MAX_HEALTH: 1

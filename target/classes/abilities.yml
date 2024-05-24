@@ -4,17 +4,20 @@ abilities:
   disabled:
     ability-type: DISABLED
     display-name: "&4Disabled"
-    description: "does nothing"
+    description:
+      - "does nothing"
   strength-1:
     ability-type: HELD_POTION_EFFECT
     potion-effect: STRENGTH
+    description:
+      - "gives strength"
     power: 0
   fireball:
     ability-type: FIREBALL
     display-name: "&cFireball"
     description:
-    - "Toggle & right click"
-    - "amog"
+      - "Toggle & right click"
+      - "amog"
     cooldown-seconds: 30
     damage: 10
     explosion-radius: 4
