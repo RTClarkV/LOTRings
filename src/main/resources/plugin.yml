@@ -3,3 +3,16 @@ version: '${project.version}'
 main: dev.corestone.lotrings.LOTRings
 api-version: '1.20'
 authors: [CoreStone]
+commands:
+  lotrhelp:
+    permission: lotr.admin
+    usage: /<command>
+  lotrgetring:
+    permission: lotr.admin
+    usage: /<command>
+  lotrcreatering:
+    permission: lotr.admin
+    usage: /<command>
+  lotrgeneratelessers:
+    permission: lotr.admin
+    usage: /<command>

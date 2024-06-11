@@ -24,7 +24,9 @@ public class SlotManager implements Listener {
         this.plugin = plugin;
         plugin.getServer().getPluginManager().registerEvents(this, plugin);
         for(Ability ability : abilities){
-            this.abilities.add(ability.getAbilityID());
+            if(ability.getAbilityType().isToggled()){
+                this.abilities.add(ability.getAbilityID());
+            }
         }
         this.maxSlots = this.abilities.size()-1;
     }

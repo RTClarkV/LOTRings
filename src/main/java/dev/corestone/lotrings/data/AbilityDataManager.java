@@ -1,6 +1,7 @@
 package dev.corestone.lotrings.data;
 
 import dev.corestone.lotrings.LOTRings;
+import dev.corestone.lotrings.Ring;
 import dev.corestone.lotrings.Utilities.Colorize;
 import dev.corestone.lotrings.Utilities.Msg;
 import dev.corestone.lotrings.Utilities.NiceTools;
@@ -8,7 +9,6 @@ import dev.corestone.lotrings.abilities.AbilityType;
 import dev.corestone.lotrings.data.dataessentials.DataFile;
 import dev.corestone.lotrings.data.dataessentials.DataManager;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.util.ArrayList;
@@ -34,6 +34,7 @@ public class AbilityDataManager implements DataFile {
             String abilityPath = "abilities."+abilityName;
             try{
                 abilityData.put(abilityName, NiceTools.castHashMap("ability-type", NiceTools.castArray(AbilityType.valueOf(getConfig().getString(abilityPath+".ability-type").toUpperCase()))));
+                abilityTypes.put(abilityName, AbilityType.valueOf(getConfig().getString(abilityPath+".ability-type").toUpperCase()));
                 for(String restOfDataKey : getConfig().getConfigurationSection(abilityPath).getKeys(false)){
                     abilityData.get(abilityName).put(restOfDataKey, NiceTools.castArray(getConfig().get(abilityPath+"."+restOfDataKey)));
                 }

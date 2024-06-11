@@ -1,44 +1,65 @@
 package dev.corestone.lotrings.ringmanagers;
 
 import dev.corestone.lotrings.LOTRings;
+import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
+import org.bukkit.scheduler.BukkitScheduler;
+import org.bukkit.scheduler.BukkitTask;
 
 import java.util.HashMap;
 import java.util.UUID;
 
-public class CooldownManager extends BukkitRunnable {
+public class CooldownManager{
     private LOTRings plugin;
     private double cooldown;
-    private HashMap<UUID, Double> cooldowns = new HashMap<>();
+    private double cooldownLeft = 0;
+    private BukkitScheduler scheduler;
+    private boolean isTaskRunning = false;
 
     public CooldownManager(LOTRings plugin, double cooldown){
         this.plugin = plugin;
         this.cooldown = cooldown;
-        this.runTaskTimer(plugin, 0L, 5L); //runs task 4 times a second.
+        this.scheduler = plugin.getServer().getScheduler();
     }
-    public void setCooldown(UUID uuid){
-        cooldowns.put(uuid, cooldown);
+    public void startCooldown(){
+        if(cooldownLeft <= 0)return;
+        this.cooldownLeft = cooldown;
+        run();
+    }
+    public void setCooldownLeft(double cooldownLeft){
+        this.cooldownLeft = cooldownLeft;
+    }
+    public boolean isOnCooldown(){
+        return cooldown < 0;
+    }
+    public double getCooldownLeftInt(){
+        return (int)cooldownLeft;
+    }
+    public double getCooldown(){
+        return cooldown;
     }
     public void changeCooldown(double cooldown){
         this.cooldown = cooldown;
     }
-    public double getExactTimeLeft(UUID uuid){
-        return cooldowns.get(uuid);
-    }
-    public int getTimeLeftInt(UUID uuid){
-        return cooldowns.get(uuid).intValue();
-    }
-    public boolean isOnCooldown(UUID uuid){
-        if(!cooldowns.containsKey(uuid))return false;
-        return cooldowns.get(uuid) > -1; //I used -1 instead of 0 because of the "off by one" error.
+    public void stopTask(){
+        isTaskRunning = false;
     }
 
-    @Override
     public void run() {
-        for(UUID uuid : cooldowns.keySet()){
-            if(cooldowns.get(uuid) > -1){ //I used -1 instead of 0 because of the "off by one" error.
-                cooldowns.replace(uuid, cooldowns.get(uuid)-0.25);
+        if(isTaskRunning)return;
+        isTaskRunning = true;
+        scheduler.runTaskTimer(plugin, (task) ->{
+            if(!isTaskRunning) task.cancel();
+            if(cooldownLeft > 0){
+                cooldownLeft -= 0.25;
             }
-        }
+            //Bukkit.broadcastMessage("cooldown left: " + cooldownLeft);
+            if(cooldownLeft <= 0 ){
+                //Bukkit.broadcastMessage("Exact Time: " + ((System.currentTimeMillis() - exTime)/1000));
+                stopTask();
+                task.cancel();
+            }
+        }, 5l, 5L);
+
     }
 }

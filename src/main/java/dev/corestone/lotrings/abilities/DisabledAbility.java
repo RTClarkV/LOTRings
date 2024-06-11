@@ -2,7 +2,10 @@ package dev.corestone.lotrings.abilities;
 
 import dev.corestone.lotrings.LOTRings;
 import dev.corestone.lotrings.Ring;
+import dev.corestone.lotrings.RingState;
+import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
+import org.bukkit.scheduler.BukkitScheduler;
 
 import java.util.UUID;
 
@@ -10,12 +13,16 @@ public class DisabledAbility implements Ability, Listener {
 
     private Ring ring;
     private LOTRings plugin;
-    public DisabledAbility(LOTRings plugin, Ring ring){
+    private String abilityName;
+    private AbilityType abilityType = AbilityType.DISABLED;
+    private UUID abilityID;
+    public DisabledAbility(LOTRings plugin, Ring ring, String abilityName){
         this.plugin = plugin;
         this.ring = ring;
+        this.abilityID = UUID.randomUUID();
     }
     @Override
-    public void switchState() {
+    public void switchState(RingState ringState) {
 
     }
 
@@ -41,11 +48,11 @@ public class DisabledAbility implements Ability, Listener {
 
     @Override
     public UUID getAbilityID() {
-        return null;
+        return abilityID;
     }
 
     @Override
     public AbilityType getAbilityType() {
-        return null;
+        return abilityType;
     }
 }
