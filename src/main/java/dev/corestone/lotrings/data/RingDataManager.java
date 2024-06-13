@@ -12,6 +12,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,6 +20,7 @@ public class RingDataManager implements DataFile {
     private LOTRings plugin;
     private String fileName;
     private DataManager data;
+    private DataManager lesserRingData;
     private ArrayList<String> ringNames = new ArrayList<>();
     private HashMap<String, List<String>> ringLore = new HashMap<>();
     private HashMap<String, String> ringDisplayNames = new HashMap<>();
@@ -45,7 +47,16 @@ public class RingDataManager implements DataFile {
                             ringDisplayNames.put(ringName, getConfig().getString(path));
                         }
                         if (ringDetail.equals("abilities")) {
-                            ringAbilities.put(ringName, getConfig().getStringList(path));
+                            List<String> reverseList = getConfig().getStringList(path);
+                            Collections.reverse(reverseList);
+                            ringAbilities.put(ringName, reverseList);
+                            for(String str : ringAbilities.get(ringName)){
+                                if(!plugin.getAbilityDataManager().getAbilities().contains(str)) {
+                                    plugin.getServer().getConsoleSender().sendMessage(Colorize.format(Msg.prefix +
+                                            "&4Error&c, the ability " + str + " in ring " + ringName + " does not exist."));
+                                    ringAbilities.get(ringName).remove(str);
+                                }
+                            }
                         }
                         if (ringDetail.equals("attributes")) {
                             for (String attributeSTR : getConfig().getConfigurationSection(path).getKeys(false)) {
@@ -82,10 +93,15 @@ public class RingDataManager implements DataFile {
                     loreEdit.remove(j);
                     for(String abilityName : ringAbilities.get(ringName)){
                         int jCount = 0;
-                        for(String loreElement : (ArrayList<String>)plugin.getAbilityDataManager().getAbilityData(abilityName, "description")){
-                            loreEdit.add(j + jCount, loreElement);
-                            jCount+=1;
+                        try{
+                            for(String loreElement : (ArrayList<String>)plugin.getAbilityDataManager().getAbilityData(abilityName, "description")){
+                                loreEdit.add(j + jCount, loreElement);
+                                jCount+=1;
+                            }
+                        }catch (Exception exception){
+                            plugin.getServer().getConsoleSender().sendMessage(Colorize.format(Msg.usefulFailedRingLoad(ringName)));
                         }
+
                     }
                 }
             }

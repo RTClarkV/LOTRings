@@ -1,7 +1,6 @@
 package dev.corestone.lotrings.ringmanagers;
 
 import dev.corestone.lotrings.LOTRings;
-import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -30,6 +29,7 @@ public class NewRingTracker implements Listener {
     }
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
+        plugin.removeDisconnectedList(event.getPlayer().getUniqueId());
         scanPlayerForRing(event.getPlayer());
     }
     @EventHandler
@@ -41,6 +41,7 @@ public class NewRingTracker implements Listener {
         scanPlayerForRing(event.getPlayer());
     }
     public void scanPlayerForRing(Player player){
+        if(plugin.getDisconnectedList().contains(player.getUniqueId()))return;
         for(ItemStack item : player.getInventory()){
             if(item != null && plugin.verifyRingItem(item)){
                 plugin.addNewRing(item, player.getUniqueId());

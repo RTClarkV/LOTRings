@@ -1,23 +1,92 @@
 version: 1.0
 # you can add new custom abilities if you wish, or edit them idc.
+# potion effects for 1.20.2 can be found here: https://helpch.at/docs/1.20.2/org/bukkit/potion/PotionEffectType.html
+# sounds can be found at: https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Sound.html
 abilities:
   disabled:
     ability-type: DISABLED
-    display-name: "&4Disabled"
+    display-name: '&4Disabled'
     description:
-      - "does nothing"
+      - '&8- &4Disabled&7: does nothing'
   strength-1:
     ability-type: HELD_POTION_EFFECT
-    potion-effect: STRENGTH
-    description:
-      - "gives strength"
+    display-name: '&cStrength'
+    potion-effect: INCREASE_DAMAGE
     power: 0
+    description:
+      - '&8- &4Strength I&7: gives strength.'
   fireball:
     ability-type: FIREBALL
-    display-name: "&cFireball"
-    description:
-      - "Toggle & right click"
-      - "amog"
+    display-name: '&6Fireball'
+    # Fireball type can be NORMAL, LARGE, or SMALL
+    fireball-type: NORMAL
+    fire: true
     cooldown-seconds: 30
     damage: 10
+    speed-multiplier: 0.3
     explosion-radius: 4
+    # Burst sets the amount of fireballs shot, interval ticks sets the time between shots.
+    burst: 1
+    burst-interval-ticks: 5
+    description:
+      - '&8- &6Fireball&7: Shoots a fireball.'
+  fire-aspect-1:
+    ability-type: FIRE_ASPECT
+    display-name: '&6Fire Aspect'
+    duration-ticks: 40
+    description:
+      - '&8- &6Fire Aspect&7: catches enemies on fire.'
+  extra-hearts:
+    ability-type: POTION_TOGGLE_EFFECT
+    display-name: '&dExtra Hearts'
+    potion-effect: ABSORPTION
+    cooldown-seconds: 10
+    duration-ticks: 80
+    power: 2
+    description:
+      - '&8- &dExtra Hearts&7: adds more health!'
+  large-pushback:
+    ability-type: PUSH_BACK
+    display-name: '&4Push Back'
+    range: 10.0
+    horizontal-power: 2.5
+    vertical-power: 1.5
+    cooldown-seconds: 30
+    sound: ENTITY_WARDEN_SONIC_BOOM
+    description:
+      - '&8- &4Push Back&7: knocks entities back.'
+  large-boost:
+    ability-type: BOOST
+    display-name: '&fBoost'
+    cooldown-seconds: 10
+    magnitude: 1.5
+    sound: ENTITY_ENDER_DRAGON_FLAP
+    description:
+      - '&8- &fBoost&7: an extra umf (double jump).'
+  5-extra-hearts:
+    ability-type: MAX_HEALTH
+    display-name: '&dMax Health'
+    max-health: 30.0
+    description:
+      - '&8- &dMax Health&7: more hearts when held.'
+  slowness-and-wither:
+    ability-type: EFFECT_NEARBY_ENTITIES
+    display-name: '&7Wither'
+    cooldown-seconds: 30
+    range: 10
+    power: 0
+    duration-ticks: 120
+    sound: ENTITY_WITHER_SPAWN
+    effects:
+      - BLINDNESS
+      - WITHER
+      - SLOW
+    description:
+      - '&8- &7Wither: gives nearby players withering.'
+  invisibility:
+    ability-type: INVISIBILITY
+    display-name: '&fInvisibility'
+    cooldown-seconds: 120
+    duration-seconds: 30
+    description:
+      - '&8- &fInvisibility&7: makes you completely invisible, even armor.'

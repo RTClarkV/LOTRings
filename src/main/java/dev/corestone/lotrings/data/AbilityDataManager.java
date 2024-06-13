@@ -1,14 +1,12 @@
 package dev.corestone.lotrings.data;
 
 import dev.corestone.lotrings.LOTRings;
-import dev.corestone.lotrings.Ring;
 import dev.corestone.lotrings.Utilities.Colorize;
 import dev.corestone.lotrings.Utilities.Msg;
 import dev.corestone.lotrings.Utilities.NiceTools;
-import dev.corestone.lotrings.abilities.AbilityType;
+import dev.corestone.lotrings.abilities.abilityutil.AbilityType;
 import dev.corestone.lotrings.data.dataessentials.DataFile;
 import dev.corestone.lotrings.data.dataessentials.DataManager;
-import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.util.ArrayList;
@@ -60,6 +58,13 @@ public class AbilityDataManager implements DataFile {
     }
     public <T> T getAbilityData(String ability, String meta){
         return (T) abilityData.get(ability).get(meta).get(0);
+    }
+    public String getAbilityStringData(String ability, String meta){
+        return getAbilityData(ability, meta).toString();
+    }
+    public Float getAbilityFloatData(String ability, String meta){
+        //Bukkit.broadcastMessage(" asdkfjasdkfasdf " + abilityData.get(ability).get(meta).get(0));
+        return Float.parseFloat(abilityData.get(ability).get(meta).get(0).toString());
     }
 
     @Override

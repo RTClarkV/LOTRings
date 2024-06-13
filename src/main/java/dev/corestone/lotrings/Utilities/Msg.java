@@ -28,4 +28,9 @@ public class Msg {
                 "&cPlease check abilities.yml for missing information regarding &f" + abilityName +"&c.";
     }
 
+    //ability msgs
+    public static String abilityCooldownMessage(String abilityDisplayName, int seconds){
+        return prefix + abilityDisplayName + "&c can be used again in &7" + seconds +"s&c.";
+    }
+
 }

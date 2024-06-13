@@ -1,14 +1,20 @@
-package dev.corestone.lotrings.abilities;
+package dev.corestone.lotrings.abilities.abilityutil;
 
 public enum AbilityType {
     DISABLED(true,true),
     HELD_POTION_EFFECT(false, true),
+    POTION_TOGGLE_EFFECT(true, true),
     FIREBALL(true, true),
+    FIRE_ASPECT(false, true),
+    MAX_HEALTH(false, true),
     PUSH_BACK(true, true),
-    LEVITATION(false, true);
+    EFFECT_NEARBY_ENTITIES(true, true),
+    BOOST(false, true),
+    LEVITATION(false, true),
+    INVISIBILITY(true, true);
     private boolean isToggled;
     private boolean onlyActiveWhenHeld;
-    private AbilityType(boolean isToggled, boolean onlyActiveWhenHeld){
+    AbilityType(boolean isToggled, boolean onlyActiveWhenHeld){
         this.isToggled = isToggled;
         this.onlyActiveWhenHeld = onlyActiveWhenHeld;
     }

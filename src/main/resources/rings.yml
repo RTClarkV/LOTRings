@@ -2,27 +2,41 @@ version: 1.0
 # unique cool rings that are lore accurate here.
 rings:
   one-ring:
-    display-name: "&4One Ring"
-    custom-model-data: 11
-    item: "GOLD_NUGGET"
+    display-name: '&4One Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
     lore:
-      - "just some lore here"
-      - "abilities:"
-      - "%ability-data%"
+      - '&ajust some lore here'
+      - 'abilities:'
+      - '%ability-data%'
     abilities:
-      - "fireball"
-      - "disabled"
-    attributes:
-      GENERIC_MAX_HEALTH: 1
-  nenya:
-    display-name: "&cNenya"
+      - disabled
+      - fireball
+      - fire-aspect-1
+      - extra-hearts
+      - large-pushback
+      - large-boost
+      - 5-extra-hearts
+      - slowness-and-wither
+  narya:
+    display-name: '&cNenya'
     custom-model-data: 12
-    item: "GOLD_NUGGET"
+    item: IRON_NUGGET
     lore:
-      - "freaking lore"
-      - "%ability-data%"
+      - freaking lore
+      - '%ability-data%'
     abilities:
-      - "disabled"
-      - "fireball"
-    attributes:
-      GENERIC_MAX_HEALTH: 1
+      - disabled
+      - fireball
+      - strength-1
+  men-ring:
+    display-name: '&fRing of Man'
+    custom-model-data: 16
+    item: IRON_NUGGET
+    lore:
+      - '&blore'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - invisibility
+
