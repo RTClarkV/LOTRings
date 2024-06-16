@@ -37,10 +37,9 @@ public class Ring {
         this.owner = owner;
         this.scheduler = plugin.getServer().getScheduler();
         load(item, owner);
-
-
     }
     public void load(ItemStack item, UUID owner){
+        this.owner = owner;
         this.ringName = item.getItemMeta().getPersistentDataContainer().get(RingKeys.ringNameKey, PersistentDataType.STRING);
         this.ringID = UUID.fromString(item.getItemMeta().getPersistentDataContainer().get(RingKeys.ringIDKey, PersistentDataType.STRING));
         for(ItemStack itemStack : Bukkit.getPlayer(owner).getInventory()){

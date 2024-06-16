@@ -172,7 +172,7 @@ public final class LOTRings extends JavaPlugin implements Listener {
 //            Bukkit.broadcastMessage("oh no");
             for(Ring ring : ringList){
                 if(ring.getUUID().equals(getRingItemID(item)) && ring.getState().equals(RingState.LOST))
-                    ring.load(item ,owner);
+                    ring.load(item, owner);
             }
             return;
         }

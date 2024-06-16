@@ -11,6 +11,7 @@ import org.bukkit.Sound;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerToggleFlightEvent;
 import org.bukkit.event.player.PlayerVelocityEvent;
 
@@ -25,37 +26,20 @@ public class BoostAbility extends AbilitySuper {
             this.power = plugin.getAbilityDataManager().getAbilityFloatData(abilityName, "magnitude").doubleValue();
             this.cooldownManager = new CooldownManager(plugin, this, plugin.getAbilityDataManager().getAbilityFloatData(abilityName, "cooldown-seconds").doubleValue());
             this.sound = Sound.valueOf(plugin.getAbilityDataManager().getAbilityStringData(abilityName, "sound").toUpperCase());
-//            Bukkit.getPlayer(ring.getOwner()).setAllowFlight(true);
-//            Bukkit.getPlayer(ring.getOwner()).setFlying(false);
-            Bukkit.getPlayer(ring.getOwner()).setFlyingFallDamage(TriState.TRUE);
         }catch (Exception e){
             sendLoadError();
-            Bukkit.getPlayer(ring.getOwner()).setAllowFlight(false);
-            Bukkit.getPlayer(ring.getOwner()).setFlying(false);
         }
     }
     @Override
     public void switchState(RingState ringState){
         if(ringState == RingState.LOST){
-            Bukkit.getPlayer(ring.getOwner()).setAllowFlight(false);
-            Bukkit.getPlayer(ring.getOwner()).setFlying(false);
             HandlerList.unregisterAll(this);
-        }
-        if(ringState == RingState.INVENTORY){
-            Bukkit.getPlayer(ring.getOwner()).setAllowFlight(false);
-            Bukkit.getPlayer(ring.getOwner()).setFlying(false);
-        }
-        if(ringState == RingState.HELD){
-            Bukkit.getPlayer(ring.getOwner()).setAllowFlight(true);
-            Bukkit.getPlayer(ring.getOwner()).setFlying(false);
-            Bukkit.getPlayer(ring.getOwner()).setFlyingFallDamage(TriState.TRUE);
         }
     }
 
     @EventHandler
-    public void doubleJump(PlayerToggleFlightEvent event){
-        if(!event.getPlayer().hasPermission("lotr.admin"))event.setCancelled(true);
-        if(event.getPlayer().getUniqueId().equals(ring.getOwner()))event.setCancelled(true);
+    public void doubleJump(PlayerInteractEvent event){
+        if(!event.getAction().isRightClick())return;
         if(!abilityCanBeUsed(event.getPlayer().getUniqueId()))return;
         if(cooldownManager.checkAndStartCooldown())return;
         event.getPlayer().setVelocity(event.getPlayer().getLocation().getDirection().multiply(power));

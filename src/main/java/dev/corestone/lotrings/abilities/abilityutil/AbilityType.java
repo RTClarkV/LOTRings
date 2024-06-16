@@ -9,7 +9,7 @@ public enum AbilityType {
     MAX_HEALTH(false, true),
     PUSH_BACK(true, true),
     EFFECT_NEARBY_ENTITIES(true, true),
-    BOOST(false, true),
+    BOOST(true, true),
     LEVITATION(false, true),
     INVISIBILITY(true, true);
     private boolean isToggled;
