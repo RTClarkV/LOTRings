@@ -38,7 +38,7 @@ public class BoostAbility extends AbilitySuper {
     }
 
     @EventHandler
-    public void doubleJump(PlayerInteractEvent event){
+    public void playerInteract(PlayerInteractEvent event){
         if(!event.getAction().isRightClick())return;
         if(!abilityCanBeUsed(event.getPlayer().getUniqueId()))return;
         if(cooldownManager.checkAndStartCooldown())return;
