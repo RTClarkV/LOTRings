@@ -12,6 +12,8 @@ public enum AbilityType {
     BOOST(true, true),
     LEVITATION(false, true),
     INVISIBILITY(true, true);
+    TUNNELING(true, true);
+
     private boolean isToggled;
     private boolean onlyActiveWhenHeld;
     AbilityType(boolean isToggled, boolean onlyActiveWhenHeld){

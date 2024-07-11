@@ -49,6 +49,9 @@ public class AbilityGenerator {
                 case INVISIBILITY:
                     abilities.add(new InvisibilityAbility(plugin, ring, strAb));
                     break;
+                case TUNNELING:
+                    abilities.add(new TunnelingAbility(plugin, ring, strAb));
+                    break;
             }
         }
         return abilities;
