@@ -90,3 +90,62 @@ abilities:
     duration-seconds: 30
     description:
       - '&8- &fInvisibility&7: makes you completely invisible, even armor.'
+  tunneling:
+    ability-type: TUNNELING
+    display-name: "&cTunneling"
+    range: 5.0
+    cooldown-seconds: 3.0
+    sound: BLOCK_STONE_BREAK
+    description:
+      - "&8- &cTunneling&7: Breaks a 3x3 area of blocks in the direction you're facing."
+  fortune:
+    ability-type: FORTUNE
+    display-name: "&6Fortune"
+    fortune-level: 3
+    description:
+      - "&8- &6Fortune&7: Anything you break acts like it was broken with the Fortune effect."
+  lightning:
+    ability-type: LIGHTNING
+    display-name: "&eLightning Strike"
+    range: 30.0
+    sound: ENTITY_LIGHTNING_BOLT_THUNDER
+    cooldown-seconds: 5.0
+    description:
+      - "&8- &eLightning Strike&7: Summons a lightning bolt at the location you're looking at within a specified range."
+  riptide:
+    ability-type: RIPTIDE
+    display-name: "&bRiptide"
+    force-multiplier: 2.0
+    sound: ITEM_TRIDENT_RIPTIDE_1
+    cooldown-seconds: 5.0
+    description:
+      - "&8- &bRiptide Propel&7: Propels you forward like the Riptide enchantment."
+  bonemeal:
+    ability-type: BONEMEAL
+    display-name: "&aBonemeal"
+    sound: ITEM_BONE_MEAL_USE
+    description:
+      - "&8- &aBonemeal Effect&7: Right-click to apply bonemeal to applicable blocks."
+  rainstorm:
+    ability-type: RAINSTORM
+    display-name: "&9Summon Rainstorm"
+    duration-seconds: 60.0
+    sound: ENTITY_LIGHTNING_BOLT_THUNDER
+    cooldown-seconds: 120.0
+    description:
+      - "&8- &9Summon Rainstorm&7: Summons a rainstorm for a specified duration."
+  guardian:
+    ability-type: GUARDIAN
+    display-name: "&bGuardian Beam"
+    damage: 5.0
+    sound: ENTITY_WITHER_SHOOT
+    cooldown-seconds: 10.0
+    description:
+      - "&8- &bGuardian Beam&7: Shoots a damaging Guardian beam."
+
+
+
+
+
+
+

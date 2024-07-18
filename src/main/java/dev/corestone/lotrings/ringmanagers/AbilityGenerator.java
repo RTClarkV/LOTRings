@@ -52,6 +52,23 @@ public class AbilityGenerator {
                 case TUNNELING:
                     abilities.add(new TunnelingAbility(plugin, ring, strAb));
                     break;
+                case FORTUNE:
+                    abilities.add(new FortuneAbility(plugin, ring, strAb));
+                    break;
+                case LIGHTNING:
+                    abilities.add(new LightningAbility(plugin, ring, strAb));
+                    break;
+                case RIPTIDE:
+                    abilities.add(new RiptideAbility(plugin, ring, strAb));
+                    break;
+                case BONEMEAL:
+                    abilities.add(new BonemealAbility(plugin, ring, strAb));
+                    break;
+                case RAINSTORM:
+                    abilities.add(new SummonRainstormAbility(plugin, ring, strAb));
+                    break;
+                case GUARDIAN:
+                    abilities.add(new GuardianAbility(plugin, ring, strAb));
             }
         }
         return abilities;
