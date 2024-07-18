@@ -1,15 +1,13 @@
+// NOT FUNCTIONAL
 package dev.corestone.lotrings.abilities;
 
 import dev.corestone.lotrings.LOTRings;
 import dev.corestone.lotrings.Ring;
 import dev.corestone.lotrings.RingState;
-import dev.corestone.lotrings.abilities.AbilitySuper;
 import dev.corestone.lotrings.abilities.abilityutil.CooldownManager;
-import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Sound;
 import org.bukkit.World;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
