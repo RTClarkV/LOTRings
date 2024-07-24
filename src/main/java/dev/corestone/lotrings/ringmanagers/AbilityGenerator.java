@@ -67,8 +67,6 @@ public class AbilityGenerator {
                 case RAINSTORM:
                     abilities.add(new SummonRainstormAbility(plugin, ring, strAb));
                     break;
-                case GUARDIAN:
-                    abilities.add(new GuardianAbility(plugin, ring, strAb));
             }
         }
         return abilities;

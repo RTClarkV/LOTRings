@@ -17,8 +17,8 @@ public enum AbilityType {
     LIGHTNING(true, true),
     RIPTIDE(true, true),
     BONEMEAL(true, true),
-    RAINSTORM(true, true),
-    GUARDIAN(true, true);
+    RAINSTORM(true, true);
+
 
     private boolean isToggled;
     private boolean onlyActiveWhenHeld;
