@@ -39,4 +39,18 @@ rings:
     abilities:
       - disabled
       - invisibility
-
+  dwarven-ring:
+    display-name: '&3Dwarven Ring'
+    custom-model-data: 2
+    item: IRON_NUGGET
+    lore:
+      - "&blore"
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - tunneling
+      - fortune
+      - lightning
+      - riptide
+      - bonemeal
+      - rainstorm

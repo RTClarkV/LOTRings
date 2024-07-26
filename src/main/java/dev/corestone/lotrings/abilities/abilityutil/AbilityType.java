@@ -11,7 +11,15 @@ public enum AbilityType {
     EFFECT_NEARBY_ENTITIES(true, true),
     BOOST(true, true),
     LEVITATION(false, true),
-    INVISIBILITY(true, true);
+    INVISIBILITY(true, true),
+    TUNNELING(true, true),
+    FORTUNE(false, true),
+    LIGHTNING(true, true),
+    RIPTIDE(true, true),
+    BONEMEAL(true, true),
+    RAINSTORM(true, true);
+
+
     private boolean isToggled;
     private boolean onlyActiveWhenHeld;
     AbilityType(boolean isToggled, boolean onlyActiveWhenHeld){

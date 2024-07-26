@@ -26,7 +26,7 @@ public class PushBackAbility extends AbilitySuper {
             this.powerY = plugin.getAbilityDataManager().getAbilityFloatData(abilityName, "vertical-power").doubleValue();
             this.sound = Sound.valueOf(plugin.getAbilityDataManager().getAbilityStringData(abilityName, "sound").toUpperCase());
             this.cooldownManager = new CooldownManager(plugin, this, plugin.getAbilityDataManager().getAbilityFloatData(abilityName, "cooldown-seconds").doubleValue());
-        }catch (Exception e){
+        } catch (Exception e) {
             sendLoadError();
         }
     }
