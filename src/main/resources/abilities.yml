@@ -96,6 +96,8 @@ abilities:
     range: 5.0
     cooldown-seconds: 3.0
     sound: BLOCK_STONE_BREAK
+    unbreakable-blocks:
+      - BEDROCK
     description:
       - "&8- &cTunneling&7: Breaks a 3x3 area of blocks in the direction you're facing."
   fortune:

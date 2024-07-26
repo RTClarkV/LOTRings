@@ -96,6 +96,8 @@ abilities:
     range: 5.0
     cooldown-seconds: 3.0
     sound: BLOCK_STONE_BREAK
+    unbreakable-blocks:
+      - BEDROCK
     description:
       - "&8- &cTunneling&7: Breaks a 3x3 area of blocks in the direction you're facing."
   fortune:
@@ -134,26 +136,6 @@ abilities:
     cooldown-seconds: 120.0
     description:
       - "&8- &9Summon Rainstorm&7: Summons a rainstorm for a specified duration."
-  guardian:
-    ability-type: GUARDIAN
-    display-name: '&3Guardian Beam'
-    cooldown-seconds: 1
-    damage: 2000
-    range: 50
-    sound: ENTITY_ELDER_GUARDIAN_CURSE
-    particle: SONIC_BOOM
-    density: 3
-    description:
-      - "&8- &bGuardian Beam&7: Shoots a damaging Guardian beam."
-  rain_fireballs:
-    ability-type: RAIN_FIREBALLS
-    display-name: "&cRain Fireballs"
-    radius: 10.0
-    power: 5
-    sound: ENTITY_BLAZE_SHOOT
-    cooldown-seconds: 30.0
-    description:
-      - "&8- &cRain Fireballs&7: Summons a rain of fireballs in the area around you."
 
 
 

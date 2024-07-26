@@ -8,6 +8,7 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
@@ -35,16 +36,17 @@ public class FortuneAbility extends AbilitySuper {
         }
     }
 
-    @EventHandler
+    @EventHandler(priority = EventPriority.LOW)
     public void onBlockBreak(BlockBreakEvent event) {
+        if (!ring.isHeld()) return;
+        if (event.isCancelled()) return;
+
         Player player = event.getPlayer();
         if (!abilityCanBeUsed(player.getUniqueId())) return;
 
         ItemStack tool = new ItemStack(Material.DIAMOND_PICKAXE);
-
         tool.addUnsafeEnchantment(Enchantment.LOOT_BONUS_BLOCKS, (int) fortuneLevel);
 
         event.setDropItems(false);
-        event.getBlock().breakNaturally(tool);
     }
 }

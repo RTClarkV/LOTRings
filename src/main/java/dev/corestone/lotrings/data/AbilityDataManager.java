@@ -11,6 +11,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class AbilityDataManager implements DataFile {
     private LOTRings plugin;
@@ -20,12 +21,14 @@ public class AbilityDataManager implements DataFile {
 
     //private HashMap<String, ArrayList<HashMap<String, ?>>> abilityData = new HashMap<>();
     private HashMap<String, HashMap<String, ArrayList<?>>> abilityData = new HashMap<>();
+
     public AbilityDataManager(LOTRings plugin, String fileName){
         this.plugin = plugin;
         this.data = new DataManager(plugin, this, fileName);
         update(data.getInternalConfig());
         load();
     }
+
     public void load(){
         for(String abilityName : data.getConfig().getConfigurationSection("abilities").getKeys(false)){
             abilities.add(abilityName);
@@ -41,30 +44,46 @@ public class AbilityDataManager implements DataFile {
                 plugin.getServer().getConsoleSender().sendMessage(Colorize.format(Msg.prefix + "&cPlease check &f" + abilityName + "&c in the abilities.yml file." ));
             }
         }
-
     }
+
     public <T> HashMap<String, ?> addAbilityCash(String index, T thing){
         HashMap<String, T> innerMap = new HashMap<>();
         innerMap.put(index, thing);
         return innerMap;
     }
 
-
     public ArrayList<String> getAbilities(){
         return abilities;
     }
+
     public AbilityType getAbilityType(String ability){
         return abilityTypes.get(ability);
     }
+
     public <T> T getAbilityData(String ability, String meta){
         return (T) abilityData.get(ability).get(meta).get(0);
     }
+
     public String getAbilityStringData(String ability, String meta){
         return getAbilityData(ability, meta).toString();
     }
+
     public Float getAbilityFloatData(String ability, String meta){
-        //Bukkit.broadcastMessage(" asdkfjasdkfasdf " + abilityData.get(ability).get(meta).get(0));
         return Float.parseFloat(abilityData.get(ability).get(meta).get(0).toString());
+    }
+
+    public List<String> getAbilityStringListData(String ability, String meta){
+        List<?> list = abilityData.get(ability).get(meta);
+        if (list == null) {
+            return new ArrayList<>();
+        }
+        List<String> stringList = new ArrayList<>();
+        for (Object item : list) {
+            if (item instanceof String) {
+                stringList.add((String) item);
+            }
+        }
+        return stringList;
     }
 
     @Override

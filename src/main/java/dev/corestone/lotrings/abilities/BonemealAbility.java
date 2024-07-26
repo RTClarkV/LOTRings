@@ -23,13 +23,6 @@ public class BonemealAbility extends AbilitySuper {
         }
     }
 
-    @Override
-    public void switchState(RingState ringState) {
-        if (ringState == RingState.LOST) {
-            HandlerList.unregisterAll(this);
-        }
-    }
-
     @EventHandler
     public void playerInteract(PlayerInteractEvent event) {
         Player player = event.getPlayer();
