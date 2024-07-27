@@ -94,15 +94,10 @@ public class Ring {
         //plugin.deleteRing(ringID);
         slotManager.delete();
     }
-    public void reloadPrepare(){
+    public void reloadPrepare() {
         slotManager.delete();
         ringStateManager.unregister();
-        for(Ability ability : abilities){
-            ability.switchState(RingState.LOST);
-        }
-    }
-    public void inventoryLogic(){
-
+        switchRingState(RingState.LOST);
     }
     public UUID getOwner(){
         return owner;
