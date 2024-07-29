@@ -145,14 +145,14 @@ public class TunnelingAbility extends AbilitySuper {
 
     private void breakBlock(Block block, Player player){
 
-            // Create and call a BlockBreakEvent to check if the block can be broken
-            //BlockBreakEvent breakEvent = new BlockBreakEvent(block, player);
-            //Bukkit.getPluginManager().callEvent(breakEvent);
-            player.breakBlock(block);
-            // If the event is cancelled, skip breaking the block
-            //if (breakEvent.isCancelled()) return;
-            //block.breakNaturally();
-            block.getWorld().playSound(block.getLocation(), Sound.BLOCK_STONE_BREAK, 5 ,1);
-            block.getWorld().spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 10, block.getType().createBlockData());
+        // Create and call a BlockBreakEvent to check if the block can be broken
+        //BlockBreakEvent breakEvent = new BlockBreakEvent(block, player);
+        //Bukkit.getPluginManager().callEvent(breakEvent);
+        player.breakBlock(block);
+        // If the event is cancelled, skip breaking the block
+        //if (breakEvent.isCancelled()) return;
+        //block.breakNaturally();
+        block.getWorld().playSound(block.getLocation(), Sound.BLOCK_STONE_BREAK, 5 ,1);
+        block.getWorld().spawnParticle(Particle.BLOCK_CRACK, block.getLocation(), 10, block.getType().createBlockData());
     }
 }
