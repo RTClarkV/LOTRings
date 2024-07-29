@@ -24,7 +24,7 @@ abilities:
     cooldown-seconds: 30
     damage: 10
     speed-multiplier: 0.3
-    explosion-radius: 4
+    explosion-radius: 2.0
     # Burst sets the amount of fireballs shot, interval ticks sets the time between shots.
     burst: 1
     burst-interval-ticks: 5
@@ -41,16 +41,16 @@ abilities:
     display-name: '&dExtra Hearts'
     potion-effect: ABSORPTION
     cooldown-seconds: 10
-    duration-ticks: 80
+    duration-ticks: 150
     power: 2
     description:
       - '&8- &dExtra Hearts&7: adds more health!'
   large-pushback:
     ability-type: PUSH_BACK
     display-name: '&4Push Back'
-    range: 10.0
-    horizontal-power: 2.5
-    vertical-power: 1.5
+    range: 12.5
+    horizontal-power: 3.5
+    vertical-power: 2.0
     cooldown-seconds: 30
     sound: ENTITY_WARDEN_SONIC_BOOM
     description:
@@ -59,7 +59,7 @@ abilities:
     ability-type: BOOST
     display-name: '&fBoost'
     cooldown-seconds: 10
-    magnitude: 1.5
+    magnitude: 2.0
     sound: ENTITY_ENDER_DRAGON_FLAP
     description:
       - '&8- &fBoost&7: an extra umf (double jump).'
@@ -90,56 +90,272 @@ abilities:
     duration-seconds: 30
     description:
       - '&8- &fInvisibility&7: makes you completely invisible, even armor.'
+  regeneration-1:
+    ability-type: HELD_POTION_EFFECT
+    display-name: '&regeneration'
+    potion-effect: REGENERATION
+    power: 0
+    description:
+      - '&8- &4Regeneration I&7: gives regeneration.'
+  resistance-1:
+    ability-type: HELD_POTION_EFFECT
+    display-name: '&cresistance'
+    potion-effect: DAMAGE_RESISTANCE
+    power: 0
+    description:
+      - '&8- &4Resistance I&7: gives resistance.'
+  health-boost-1:
+    ability-type: HELD_POTION_EFFECT
+    display-name: '&cHealth Boost'
+    potion-effect: HEALTH_BOOST
+    power: 0
+    description:
+      - '&8- &4Health boost I&7: gives more hearts.'
+  small-pushback:
+    ability-type: PUSH_BACK
+    display-name: '&4Small Push Back'
+    range: 5
+    horizontal-power: 1.5
+    vertical-power: 1.0
+    cooldown-seconds: 30
+    sound: ENTITY_ARMOR_STAND_BREAK
+    description:
+      - '&8- &4Small Push Back&7: knocks entities back.'
+  small-fireball:
+    ability-type: FIREBALL
+    display-name: '&6Small Fireball'
+    # Fireball type can be NORMAL, LARGE, or SMALL
+    fireball-type: SMALL
+    fire: true
+    cooldown-seconds: 30
+    damage: 5
+    speed-multiplier: 0.3
+    explosion-radius: 2
+    # Burst sets the amount of fireballs shot, interval ticks sets the time between shots.
+    burst: 1
+    burst-interval-ticks: 5
+    description:
+      - '&8- &6Small Fireball&7: Shoots a small fireball.'
+  small-fireball-burst:
+    ability-type: FIREBALL
+    display-name: '&6Small Fireball Burst'
+    # Fireball type can be NORMAL, LARGE, or SMALL
+    fireball-type: SMALL
+    fire: true
+    cooldown-seconds: 30
+    damage: 7
+    speed-multiplier: 0.3
+    explosion-radius: 0
+    # Burst sets the amount of fireballs shot, interval ticks sets the time between shots.
+    burst: 3
+    burst-interval-ticks: 5
+    description:
+      - '&8- &6Small Fireball Burst&7: Shoots a small burst of 3 fireballs.'
+  small-boost:
+    ability-type: BOOST
+    display-name: '&fSmall Boost'
+    cooldown-seconds: 20
+    magnitude: 1.0
+    sound: ENTITY_BAT_TAKEOFF
+    description:
+      - '&8- &fSmall Boost&7: an extra umf (double jump).'
+  fear-of-nazgul:
+    ability-type: EFFECT_NEARBY_ENTITIES
+    display-name: '&7Wither'
+    cooldown-seconds: 60
+    range: 10
+    power: 0
+    duration-ticks: 120
+    sound: ENTITY_WITHER_SPAWN
+    effects:
+      - BLINDNESS
+      - WITHER
+      - SLOW
+    description:
+      - '&8- &7Fear of the Nazgul: gives nearby players withering, blindness, and slowness.'
+  lifesteal-heal:
+    ability-type: POTION_TOGGLE_EFFECT
+    display-name: '&dHealing'
+    potion-effect: HEAL
+    cooldown-seconds: 60
+    duration-ticks: 1
+    power: 0
+    description:
+      - '&8- &dHealing&7: adds more health!'
+  Levitating-others:
+    ability-type: EFFECT_NEARBY_ENTITIES
+    display-name: '&7Levitate others'
+    cooldown-seconds: 60
+    range: 7
+    power: 0
+    duration-ticks: 100
+    sound: BLOCK_SHULKER_BOX_OPEN
+    effects:
+      - LEVITATION
+      - SLOW_FALLING
+  water-breathing:
+    ability-type: HELD_POTION_EFFECT
+    display-name: '&Water Breathing'
+    potion-effect: WATER_BREATHING
+    power: 0
+    description:
+      - '&8- &4Water Breathing I&7: lets you breath underwater.'
+  medium-pushback:
+    ability-type: PUSH_BACK
+    display-name: '&4Push Back'
+    range: 7.5
+    horizontal-power: 2.0
+    vertical-power: 2.0
+    cooldown-seconds: 45
+    sound: ENTITY_WARDEN_SONIC_BOOM
+    description:
+      - '&8- &4Push Back&7: knocks entities back.'
+  medium-boost:
+    ability-type: BOOST
+    display-name: '&fBoost'
+    cooldown-seconds: 30
+    magnitude: 1.25
+    sound: ENTITY_ENDER_DRAGON_FLAP
+    description:
+      - '&8- &fBoost&7: an extra umf (double jump).'
+  water-breathing-others:
+    ability-type: EFFECT_NEARBY_ENTITIES
+    display-name: '&7Enhanced Swimming'
+    cooldown-seconds: 60
+    range: 10
+    power: 0
+    duration-ticks: 600
+    sound: ENTITY_DOLPHIN_SWIM
+    effects:
+      - DOLPHINS_GRACE
+      - WATER_BREATHING
+    description:
+      - '&8- &7Enhanced Swimming: gives nearby players Dolphins Grace and Water Breathing.'
+  dolphins-grace:
+    ability-type: HELD_POTION_EFFECT
+    display-name: '&Dolphins Grace'
+    potion-effect: DOLPHINS_GRACE
+    power: 0
+    description:
+      - '&8- &4Dolphins Grace: Lets you swim fast'
+  resistance-2:
+    ability-type: HELD_POTION_EFFECT
+    display-name: '&cresistance'
+    potion-effect: DAMAGE_RESISTANCE
+    power: 1
+    description:
+      - '&8- &4Resistance II&7: gives resistance II.'
+  small-extra-hearts:
+    ability-type: POTION_TOGGLE_EFFECT
+    display-name: '&dExtra Hearts'
+    potion-effect: ABSORPTION
+    cooldown-seconds: 30
+    duration-ticks: 100
+    power: 1
+    description:
+      - '&8- &dExtra Hearts&7: adds more health!'
+  slow-falling:
+    ability-type: POTION_TOGGLE_EFFECT
+    display-name: '&dSlow Falling'
+    potion-effect: SLOW_FALLING
+    cooldown-seconds: 30
+    duration-ticks: 80
+    power: 1
+    description:
+      - '&8- &dSlow Falling&7: adds slow falling!'
+  fire-res:
+    ability-type: HELD_POTION_EFFECT
+    display-name: '&cFire Resistance'
+    potion-effect: FIRE_RESISTANCE
+    power: 1
+    description:
+      - '&8- &4Fire Resistance &7: gives fire resistance.'
+  small-speed-boost:
+    ability-type: POTION_TOGGLE_EFFECT
+    display-name: '&dSpeed'
+    potion-effect: SPEED
+    cooldown-seconds: 20
+    duration-ticks: 60
+    power: 1
+    description:
+      - '&8- &dSpeed&7: makes you speedy!'
+  large-speed-boost:
+    ability-type: POTION_TOGGLE_EFFECT
+    display-name: '&dSpeed'
+    potion-effect: SPEED
+    cooldown-seconds: 30
+    duration-ticks: 60
+    power: 2
+    description:
+      - '&8- &dSpeed&7: makes you speedy!'
+  jump-boost:
+    ability-type: POTION_TOGGLE_EFFECT
+    display-name: '&dJump Boost'
+    potion-effect: JUMP
+    cooldown-seconds: 30
+    duration-ticks: 50
+    power: 0
+    description:
+      - '&8- &dJump Boost&7: makes you jump higher!'
+  small-haste:
+    ability-type: POTION_TOGGLE_EFFECT
+    display-name: '&dHaste'
+    potion-effect: FAST_DIGGING
+    cooldown-seconds: 30
+    duration-ticks: 200
+    power: 0
+    description:
+      - '&8- &dHaste&7: makes you dig fast!'
   tunneling:
     ability-type: TUNNELING
-    display-name: "&cTunneling"
-    range: 5.0
-    cooldown-seconds: 3.0
+    display-name: '&cTunneling'
     sound: BLOCK_STONE_BREAK
     unbreakable-blocks:
       - BEDROCK
     description:
-      - "&8- &cTunneling&7: Breaks a 3x3 area of blocks in the direction you're facing."
+      - '&8- &cTunneling&7: Breaks a 3x3 area of blocks in the direction you''re facing.'
   fortune:
     ability-type: FORTUNE
-    display-name: "&6Fortune"
+    display-name: '&6Fortune'
     fortune-level: 3
     description:
-      - "&8- &6Fortune&7: Anything you break acts like it was broken with the Fortune effect."
+      - '&8- &6Fortune&7: Anything you break acts like it was broken with the Fortune
+      effect.'
   lightning:
     ability-type: LIGHTNING
-    display-name: "&eLightning Strike"
+    display-name: '&eLightning Strike'
     range: 30.0
     sound: ENTITY_LIGHTNING_BOLT_THUNDER
-    cooldown-seconds: 5.0
+    cooldown-seconds: 3.0
     description:
-      - "&8- &eLightning Strike&7: Summons a lightning bolt at the location you're looking at within a specified range."
+      - '&8- &eLightning Strike&7: Summons a lightning bolt at the location you''re
+      looking at within a specified range.'
   riptide:
     ability-type: RIPTIDE
-    display-name: "&bRiptide"
+    display-name: '&bRiptide'
     force-multiplier: 2.0
     sound: ITEM_TRIDENT_RIPTIDE_1
     cooldown-seconds: 5.0
     description:
-      - "&8- &bRiptide Propel&7: Propels you forward like the Riptide enchantment."
+      - '&8- &bRiptide Propel&7: Propels you forward like the Riptide enchantment.'
   bonemeal:
     ability-type: BONEMEAL
-    display-name: "&aBonemeal"
+    display-name: '&aBonemeal'
     sound: ITEM_BONE_MEAL_USE
     description:
-      - "&8- &aBonemeal Effect&7: Right-click to apply bonemeal to applicable blocks."
+      - '&8- &aBonemeal Effect&7: Right-click to apply bonemeal to applicable blocks.'
   rainstorm:
     ability-type: RAINSTORM
-    display-name: "&9Summon Rainstorm"
+    display-name: '&9Summon Rainstorm'
     duration-seconds: 60.0
     sound: ENTITY_LIGHTNING_BOLT_THUNDER
     cooldown-seconds: 120.0
     description:
-      - "&8- &9Summon Rainstorm&7: Summons a rainstorm for a specified duration."
-
-
-
-
-
-
-
+      - '&8- &9Summon Rainstorm&7: Summons a rainstorm for a specified duration.'
+  haste-1:
+    ability-type: HELD_POTION_EFFECT
+    display-name: '&cHaste'
+    potion-effect: FAST_DIGGING
+    power: 1
+    description:
+      - '&8- &4Haste II&7: makes you dig fast.'

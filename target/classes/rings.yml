@@ -1,56 +1,235 @@
 version: 1.0
-# unique cool rings that are lore accurate here.
+# ----------------------------------------------------------------------------------------
+#                                LOTRings by CoreStone
+#        For help, bug reports, or feature requests my discord is: CoreStone#4179.
+# ----------------------------------------------------------------------------------------
+#
+# You can add rings using the existing ones as examples. You can add any abilities listed in abilities.yml.
+# You can add abilities in abilities.yml using the exact format for the ability type. There are many examples there.
+# use /lotrgetring to get a ring.
+# use /lotrreload to reload the plugin.
+#
 rings:
   one-ring:
     display-name: '&4One Ring'
     custom-model-data: 10
     item: GOLD_NUGGET
     lore:
-      - '&ajust some lore here'
-      - 'abilities:'
+      - '&0One Ring to Rule Them All, One Ring to find them,'
+      - '&0One Ring to bring them all, and in the darkness bind them.'
+      - '&4abilities:'
       - '%ability-data%'
     abilities:
       - disabled
       - fireball
-      - fire-aspect-1
       - extra-hearts
       - large-pushback
       - large-boost
       - 5-extra-hearts
       - slowness-and-wither
+      - resistance-2
+      - regeneration-1
+      - strength-1
   narya:
-    display-name: '&cNenya'
-    custom-model-data: 12
+    display-name: '&cNarya'
+    custom-model-data: 13
     item: IRON_NUGGET
     lore:
-      - freaking lore
+      - '&4The Elven Ring of Fire'
       - '%ability-data%'
     abilities:
       - disabled
       - fireball
-      - strength-1
+      - resistance-1
+      - small-fireball-burst
+      - regeneration-1
+      - fire-aspect-1
+      - fire-res
+      - bonemeal
   men-ring:
-    display-name: '&fRing of Man'
+    display-name: '&7Ring of Man'
     custom-model-data: 16
     item: IRON_NUGGET
     lore:
-      - '&blore'
+      - '&bAn Ancient Ring of Man'
       - '%ability-data%'
     abilities:
       - disabled
       - invisibility
-  dwarven-ring:
-    display-name: '&3Dwarven Ring'
-    custom-model-data: 2
-    item: IRON_NUGGET
+      - fear-of-nazgul
+      - regeneration-1
+      - resistance-1
+      - lifesteal-heal
+  lesser-ring:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
     lore:
-      - "&blore"
+      - '&bA Lesser Ring'
       - '%ability-data%'
     abilities:
       - disabled
-      - tunneling
-      - fortune
-      - lightning
+      - small-pushback
+      - small-boost
+  nenya:
+    display-name: '&9Nenya'
+    custom-model-data: 14
+    item: IRON_NUGGET
+    lore:
+      - '&fThe Elven Ring of Water'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - regeneration-1
+      - resistance-1
+      - water-breathing
+      - water-breathing-others
+      - dolphins-grace
       - riptide
-      - bonemeal
       - rainstorm
+      - lightning
+      - bonemeal
+  vilya:
+    display-name: '&fVilya'
+    custom-model-data: 15
+    item: IRON_NUGGET
+    lore:
+      - '&fThe Elven Ring of Air'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - regeneration-1
+      - Levitating-others
+      - medium-boost
+      - medium-pushback
+      - resistance-1
+      - slow-falling
+      - bonemeal
+  lesser-ring2:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
+    lore:
+      - '&bA Lesser Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - small-fireball-burst
+      - small-boost
+      - water-breathing
+  lesser-ring3:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
+    lore:
+      - '&bA Lesser Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - small-fireball
+      - regeneration-1
+  lesser-ring4:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
+    lore:
+      - '&bA Lesser Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - small-fireball-burst
+      - small-boost
+      - regeneration-1
+      - small-fireball
+  lesser-ring5:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
+    lore:
+      - '&bA Lesser Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - small-fireball
+  lesser-ring6:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
+    lore:
+      - '&bA Lesser Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - small-boost
+      - regeneration-1
+  lesser-ring7:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
+    lore:
+      - '&bA Lesser Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - small-boost
+      - small-boost
+      - small-boost
+  lesser-ring8:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
+    lore:
+      - '&bA Lesser Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - slow-falling
+      - small-extra-hearts
+      - small-boost
+  lesser-ring9:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
+    lore:
+      - '&bA Lesser Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - small-boost
+      - small-fireball-burst
+  lesser-ring10:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
+    lore:
+      - '&bA Lesser Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - small-speed-boost
+      - small-fireball
+      - jump-boost
+  lesser-ring11:
+    display-name: '&fLesser Ring'
+    custom-model-data: 10
+    item: GOLD_NUGGET
+    lore:
+      - '&bA Lesser Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - small-haste
+      - fire-res
+      - small-boost
+  dwarven-ring:
+    display-name: '&6Dwarven Ring'
+    custom-model-data: 12
+    item: IRON_NUGGET
+    lore:
+      - '&fA Dwarven Ring'
+      - '%ability-data%'
+    abilities:
+      - disabled
+      - resistance-2
+      - tunneling
+      - haste-1
