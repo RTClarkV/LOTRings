@@ -27,16 +27,6 @@ public class FortuneAbility extends AbilitySuper implements Listener {
         }
     }
 
-    @Override
-    public void switchState(RingState ringState) {
-        super.switchState(ringState);
-        if (ringState != RingState.HELD) {
-            HandlerList.unregisterAll(this);
-        } else if (ringState == RingState.HELD) {
-            Bukkit.getPluginManager().registerEvents(this, plugin);
-        }
-    }
-
     @EventHandler(priority = EventPriority.HIGH)
     public void onBlockBreak(BlockBreakEvent event) {
         if (!ring.isHeld()) return;
@@ -47,15 +37,26 @@ public class FortuneAbility extends AbilitySuper implements Listener {
 
         event.setCancelled(true);
 
-        if (fortuneLevel <= 0) {
-            plugin.getLogger().warning("Fortune level is not set properly!");
-            return;
-        }
-
         ItemStack tool = new ItemStack(Material.DIAMOND_PICKAXE);
         tool.addUnsafeEnchantment(Enchantment.LOOT_BONUS_BLOCKS, (int) fortuneLevel);
+        ItemStack usedTool = event.getPlayer().getInventory().getItemInMainHand();
+
+        int durabilityDamage = 1;
+        if (usedTool.containsEnchantment(Enchantment.DURABILITY)) {
+            int unbreakingLevel = usedTool.getEnchantmentLevel(Enchantment.DURABILITY);
+            double chance = 1.0 / (unbreakingLevel + 1);
+            if (Math.random() > chance) {
+                durabilityDamage = 0;
+            }
+        }
 
         event.getBlock().breakNaturally(tool);
+        usedTool.setDurability((short) (usedTool.getDurability() + durabilityDamage));
+
+        if (tool.getDurability() >= tool.getType().getMaxDurability()) {
+            player.getInventory().remove(tool);
+        }
     }
+
 
 }
