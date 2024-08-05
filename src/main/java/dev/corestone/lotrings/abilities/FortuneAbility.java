@@ -10,10 +10,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.HandlerList;
+import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class FortuneAbility extends AbilitySuper {
+public class FortuneAbility extends AbilitySuper implements Listener {
 
     private float fortuneLevel;
 
@@ -36,7 +37,7 @@ public class FortuneAbility extends AbilitySuper {
         }
     }
 
-    @EventHandler(priority = EventPriority.LOW)
+    @EventHandler(priority = EventPriority.HIGH)
     public void onBlockBreak(BlockBreakEvent event) {
         if (!ring.isHeld()) return;
         if (event.isCancelled()) return;
@@ -44,9 +45,17 @@ public class FortuneAbility extends AbilitySuper {
         Player player = event.getPlayer();
         if (!abilityCanBeUsed(player.getUniqueId())) return;
 
+        event.setCancelled(true);
+
+        if (fortuneLevel <= 0) {
+            plugin.getLogger().warning("Fortune level is not set properly!");
+            return;
+        }
+
         ItemStack tool = new ItemStack(Material.DIAMOND_PICKAXE);
         tool.addUnsafeEnchantment(Enchantment.LOOT_BONUS_BLOCKS, (int) fortuneLevel);
 
-        event.setDropItems(false);
+        event.getBlock().breakNaturally(tool);
     }
+
 }
