@@ -42,9 +42,10 @@ public class TunnelingAbility extends AbilitySuper {
         }
     }
 
-    @EventHandler(priority = EventPriority.LOW)
-    public void PlayerRightClick(BlockBreakEvent event) {
+    @EventHandler(priority = EventPriority.HIGH)
+    public void PlayerBreakBlock(BlockBreakEvent event) {
         if(isBreaking)return;
+        if(event.isCancelled())return;
         if (!abilityCanBeUsed(event.getPlayer().getUniqueId())) return;
         //if (cooldownManager.checkAndStartCooldown()) return;
 
