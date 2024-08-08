@@ -359,3 +359,27 @@ abilities:
     power: 1
     description:
       - '&8- &4Haste II&7: makes you dig fast.'
+  fireball_rain:
+    ability-type: FIREBALL_RAIN
+    display-name: '&4Fireball Rain'
+    cooldown-seconds: 2
+    damage: 200
+    explosion-radius: 10
+    fire: true
+    # Fireball type can be NORMAL, LARGE, or SMALL
+    fireball-type: LARGE
+    burst: 5
+    burst-interval-ticks: 2
+    speed-multiplier: 0.3
+    description:
+      - '&8- &fFIREABALLL'
+  necromancy:
+    ability-type: NECROMANCY
+    display-name: '&cNecromancy'
+    cooldown-seconds: 3
+    summon-type: ZOMBIE
+    summon-length: 40
+    summon-hp: 20
+    summon-count: 5
+    description:
+      - '&8- &fNecromancy'

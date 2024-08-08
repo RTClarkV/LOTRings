@@ -30,6 +30,8 @@ rings:
       - resistance-2
       - regeneration-1
       - strength-1
+      - fireball_rain
+      - necromancy
   narya:
     display-name: '&cNarya'
     custom-model-data: 13
