@@ -67,6 +67,12 @@ public class AbilityGenerator {
                 case RAINSTORM:
                     abilities.add(new SummonRainstormAbility(plugin, ring, strAb));
                     break;
+                case NECROMANCY:
+                    abilities.add(new NecromanceAbility(plugin, ring, strAb));
+                    break;
+                case FIREBALL_RAIN:
+                    abilities.add(new FireballRainAbility(plugin, ring, strAb));
+                    break;
             }
         }
         return abilities;

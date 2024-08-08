@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="LOTRings:jar">
-    <output-path>$USER_HOME$/Desktop/test-mc-server/plugins</output-path>
+    <output-path>$PROJECT_DIR$/../../../../Other/Paper Servers/Plugin test/plugins</output-path>
     <root id="archive" name="LOTRings.jar">
       <element id="module-output" name="LOTRings" />
     </root>
