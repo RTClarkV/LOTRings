@@ -384,3 +384,14 @@ abilities:
     summon-count: 5
     description:
       - '&8- &fNecromancy'
+  twister:
+    ability-type: TORNADO
+    display-name: "&cTornado"
+    magnitude: 1
+    lift-magnitude: 0.2
+    push-pull-mag: 0.2
+    radius: 10
+    duration-seconds: 20
+    cooldown-seconds: 22
+    description:
+      - "&8- &cTornado: &7just like Twister"

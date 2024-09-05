@@ -100,8 +100,8 @@ public class FireballRainAbility extends AbilitySuper implements Listener {
         if(explosionRadius > 0) event.getEntity().getWorld().createExplosion(event.getEntity(), explosionRadius, fire);
         if(event.getHitEntity() == null)return;
         if(event.getHitEntity() instanceof LivingEntity){
-            livingEntity livingEntity = (LivingEntity) event.getHitEntity();
-            if (livingEntity instanceof Player && livingEntity == ring.getOwner()) return;
+            LivingEntity livingEntity = (LivingEntity) event.getHitEntity();
+            if (livingEntity instanceof Player && livingEntity.getUniqueId() == ring.getOwner()) return;
             livingEntity.damage(damage, event.getEntity());
         }
     }
