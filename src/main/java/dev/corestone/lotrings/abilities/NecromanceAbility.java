@@ -75,10 +75,10 @@ public class NecromanceAbility extends AbilitySuper {
 
     @EventHandler
     public void onHit(EntityDamageByEntityEvent event){
+        if(!event.getDamager().getUniqueId().equals(ring.getOwner()))return; //if the damager is not the ring owner, return.
         if (event.getDamager() instanceof Player && event.getEntity() instanceof LivingEntity){
             Player player = ((Player) event.getDamager());
             LivingEntity damagedPlayer = (LivingEntity) event.getEntity();
-
             for(LivingEntity e : getNecroEntities(player)){
                 if(e instanceof Monster){
                     ((Monster) e).setTarget(damagedPlayer);

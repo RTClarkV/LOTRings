@@ -14,4 +14,6 @@ public class NiceTools {
         arrayList.add(thing);
         return arrayList;
     }
+
+
 }
