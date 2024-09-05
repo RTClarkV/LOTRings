@@ -19,7 +19,13 @@ public enum AbilityType {
     BONEMEAL(true, true),
     RAINSTORM(true, true),
     NECROMANCY(true, true),
-    FIREBALL_RAIN(true, true);
+    FIREBALL_RAIN(true, true),
+    SLAM(true, true),
+    HEAL_OTHERS(true, true),
+    RESIST_EFFECTS(false, true),
+    RESIST_DAMAGE(false, true),
+    IGNITE_PLAYERS(true, true),
+    LIGHTNING_RAIN(true, true);
 
 
     private boolean isToggled;

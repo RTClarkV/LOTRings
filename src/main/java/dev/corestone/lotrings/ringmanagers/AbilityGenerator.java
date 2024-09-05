@@ -73,6 +73,24 @@ public class AbilityGenerator {
                 case FIREBALL_RAIN:
                     abilities.add(new FireballRainAbility(plugin, ring, strAb));
                     break;
+                case SLAM:
+                    abilities.add(new SlamAbility(plugin, ring, strAb));
+                    break;
+                case HEAL_OTHERS:
+                    abilities.add(new HealOthersAbility(plugin, ring, strAb));
+                    break;
+                case RESIST_EFFECTS:
+                    abilities.add(new PotionResistanceAbility(plugin, ring, strAb));
+                    break;
+                case RESIST_DAMAGE:
+                    abilities.add(new ResistDamageAbility(plugin, ring, strAb));
+                    break;
+                case IGNITE_PLAYERS:
+                    abilities.add(new IgniteNearbyPlayersAbility(plugin, ring, strAb));
+                    break;
+                case LIGHTNING_RAIN:
+                    abilities.add(new LightningAreaAbility(plugin, ring, strAb));
+                    break;
             }
         }
         return abilities;

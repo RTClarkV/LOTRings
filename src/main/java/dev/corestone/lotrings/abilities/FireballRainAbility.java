@@ -13,6 +13,7 @@ import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.ProjectileHitEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitScheduler;
@@ -32,6 +33,7 @@ public class FireballRainAbility extends AbilitySuper implements Listener {
     private int burst;
     private int burstInterval;
     private BukkitScheduler scheduler;
+    private boolean immune = false;
     private ArrayList<UUID> entityIDs = new ArrayList<>();
 
     public FireballRainAbility(LOTRings plugin, Ring ring, String abilityName) {
@@ -60,7 +62,7 @@ public class FireballRainAbility extends AbilitySuper implements Listener {
 
         for(int j = 0; j < burst; j++){
             scheduler.runTaskLater(plugin, ()->{
-                if(ring.getState() != RingState.LOST) shootFireball(event.getPlayer());
+                shootFireball(event.getPlayer());
             }, (long) j *burstInterval);
         }
 
@@ -97,12 +99,22 @@ public class FireballRainAbility extends AbilitySuper implements Listener {
     public void onImpact(ProjectileHitEvent event){
         if(!entityIDs.contains(event.getEntity().getUniqueId()))return;
         entityIDs.remove(event.getEntity().getUniqueId());
+        immune = true;
         if(explosionRadius > 0) event.getEntity().getWorld().createExplosion(event.getEntity(), explosionRadius, fire);
+        immune = false;
         if(event.getHitEntity() == null)return;
         if(event.getHitEntity() instanceof LivingEntity){
-            livingEntity livingEntity = (LivingEntity) event.getHitEntity();
-            if (livingEntity instanceof Player && livingEntity == ring.getOwner()) return;
+            LivingEntity livingEntity = (LivingEntity) event.getHitEntity();
+            if (livingEntity instanceof Player && ring.getOwner().equals(livingEntity)) return;
             livingEntity.damage(damage, event.getEntity());
         }
+
+    }
+    @EventHandler
+    public void onEntityDamage(EntityDamageEvent event) {
+        if (!(event.getEntity() instanceof Player)) return;
+        if (!immune) return;
+        Player player = (Player) event.getEntity();
+        if (player.getUniqueId().equals(ring.getOwner())) event.setCancelled(true);
     }
 }

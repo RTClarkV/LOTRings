@@ -42,6 +42,9 @@ public class FortuneAbility extends AbilitySuper implements Listener {
         ItemStack usedTool = event.getPlayer().getInventory().getItemInMainHand();
 
         int durabilityDamage = 1;
+        if (usedTool.containsEnchantment(Enchantment.SILK_TOUCH)) {
+            tool.addUnsafeEnchantment(Enchantment.SILK_TOUCH, 1);
+        }
         if (usedTool.containsEnchantment(Enchantment.DURABILITY)) {
             int unbreakingLevel = usedTool.getEnchantmentLevel(Enchantment.DURABILITY);
             double chance = 1.0 / (unbreakingLevel + 1);
@@ -57,6 +60,4 @@ public class FortuneAbility extends AbilitySuper implements Listener {
             player.getInventory().remove(tool);
         }
     }
-
-
 }

@@ -13,6 +13,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.event.entity.EntityTargetLivingEntityEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -20,6 +21,7 @@ import org.bukkit.scheduler.BukkitRunnable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 public class NecromanceAbility extends AbilitySuper {
 
@@ -64,13 +66,12 @@ public class NecromanceAbility extends AbilitySuper {
                 @Override
                 public void run() {
                     summon.remove();
-                    clearNecroEntities(player);
+                    clearNecroEntities();
                     player.getWorld().playSound(player, Sound.ENTITY_WARDEN_DIG,1,1);
                 }
             }.runTaskLater(plugin, summonLength);
         }
         cooldownManager.startCooldown();
-        System.out.println(necroSummons);
     }
 
     @EventHandler
@@ -79,7 +80,10 @@ public class NecromanceAbility extends AbilitySuper {
             Player player = ((Player) event.getDamager());
             LivingEntity damagedPlayer = (LivingEntity) event.getEntity();
 
-            for(LivingEntity e : getNecroEntities(player)){
+            if (damagedPlayer instanceof Player) {
+                if (damagedPlayer.getUniqueId().equals(ring.getOwner())) return;
+            }
+            for(LivingEntity e : necroSummons){
                 if(e instanceof Monster){
                     ((Monster) e).setTarget(damagedPlayer);
                 }
@@ -94,11 +98,15 @@ public class NecromanceAbility extends AbilitySuper {
         }
     }
 
-    public List<LivingEntity> getNecroEntities(Player player) {
-        return necroSummons;
+    @EventHandler
+    public void onModDeath(EntityDeathEvent event) {
+        if (necroSummons.contains(event.getEntity())){
+            event.setDroppedExp(0);
+            event.getDrops().clear();
+        }
     }
 
-    public void clearNecroEntities(Player player) {
-        necroSummons.remove(player);
+    public void clearNecroEntities() {
+        necroSummons.clear();
     }
 }

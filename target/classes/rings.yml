@@ -27,11 +27,17 @@ rings:
       - large-boost
       - 5-extra-hearts
       - slowness-and-wither
-      - resistance-2
       - regeneration-1
       - strength-1
       - fireball_rain
       - necromancy
+      - slam
+      - slam2
+      - heal-others
+      - resist_effects
+      - resist_damage
+      - ignite-players
+      - lightning-rain
   narya:
     display-name: '&cNarya'
     custom-model-data: 13
@@ -101,7 +107,7 @@ rings:
     abilities:
       - disabled
       - regeneration-1
-      - Levitating-others
+      - levitating-others
       - medium-boost
       - medium-pushback
       - resistance-1

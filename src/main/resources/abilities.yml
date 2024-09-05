@@ -182,7 +182,7 @@ abilities:
     power: 0
     description:
       - '&8- &dHealing&7: adds more health!'
-  Levitating-others:
+  levitating-others:
     ability-type: EFFECT_NEARBY_ENTITIES
     display-name: '&7Levitate others'
     cooldown-seconds: 60
@@ -373,7 +373,7 @@ abilities:
     burst-interval-ticks: 2
     speed-multiplier: 0.3
     description:
-      - '&8- &fFIREABALLL'
+      - '&8- &fRegins fireballs from the sky!'
   necromancy:
     ability-type: NECROMANCY
     display-name: '&cNecromancy'
@@ -384,3 +384,83 @@ abilities:
     summon-count: 5
     description:
       - '&8- &fNecromancy'
+  slam:
+    ability-type: SLAM
+    display-name: '&cSlam'
+    cooldown-seconds: 10
+    launch-duration-ticks: 20
+    launch-height: 15
+    explosion-power: 5
+    pushback-range: 7
+    launch-where-looking: false
+    pushback-horizontal-strength: 10
+    pushback-vertical-strength: 10
+    fire: false
+    launch-sound: ENTITY_FIREWORK_ROCKET_LAUNCH
+    slam-sound: ENTITY_GENERIC_EXPLODE
+    description:
+      - '&8- &fSlam into the ground, causing a shockwave that launches enemies away and deals damage.'
+  slam2:
+    ability-type: SLAM
+    display-name: '&cSlam 2'
+    cooldown-seconds: 10
+    launch-duration-ticks: 20
+    launch-height: 15
+    explosion-power: 5
+    pushback-range: 7
+    launch-where-looking: true
+    pushback-horizontal-strength: 10
+    pushback-vertical-strength: 10
+    fire: false
+    launch-sound: ENTITY_FIREWORK_ROCKET_LAUNCH
+    slam-sound: ENTITY_GENERIC_EXPLODE
+    description:
+      - '&8- &fSlam into the ground, causing a shockwave that launches enemies away and deals damage.'
+  heal-others:
+    ability-type: HEAL_OTHERS
+    display-name: '&cHeal Others'
+    cooldown-seconds: 4
+    heal-amount: 10
+    sound: ENTITY_EXPERIENCE_ORB_PICKUP
+    range: 5
+    description:
+      - '&8- &fHeals a player you are looking at.'
+  resist_effects:
+    ability-type: RESIST_EFFECTS
+    display-name: '&9Resist Effects'
+    immune-effects:
+      - WITHER
+      - POISON
+      - CONFUSION
+    cooldown-seconds: 120.0
+    description:
+      - '&8- &9Potion Resistance&7: Grants immunity to Wither, Poison, and Nausea effects while holding the ring.'
+  resist_damage:
+    ability-type: RESIST_DAMAGE
+    display-name: '&9Resist Damage'
+    damage-resistance:
+      FIRE: 0.3
+      FALL: 0.5
+      ENTITY_ATTACK: 0.2
+    description:
+      - '&8- &9Resist Damage&7: Reduces damage taken from specific sources by a certain percentage while holding the ring.'
+  ignite-players:
+    cooldown-seconds: 10
+    ability-type: IGNITE_PLAYERS
+    display-name: '&9Ignite Players'
+    duration-ticks: 300
+    range: 10
+    sound: ENTITY_BLAZE_SHOOT
+    description:
+      - '&8- &9Ignite Players&7: Light Players around you on fire!'
+  lightning-rain:
+    cooldown-seconds: 15
+    ability-type: LIGHTNING_RAIN
+    display-name: '&9Lightning Area'
+    bolt-count: 100
+    strike-radius: 30
+    strike-duration-ticks: 100
+    sound: ENTITY_EVOKER_PREPARE_ATTACK
+    description:
+      - '&8- &9Lightning Area&7: Summon lightning strikes around you in a wide area!'
+

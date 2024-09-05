@@ -40,7 +40,4 @@ public class HeldPotionEffectAbility extends AbilitySuper {
         if(ringState == RingState.HELD) Bukkit.getPlayer(ring.getOwner()).addPotionEffect(new PotionEffect(potionEffectType, 100000, power));
         if(ringState != RingState.HELD) Bukkit.getPlayer(ring.getOwner()).removePotionEffect(potionEffectType);
     }
-
-
-
 }
